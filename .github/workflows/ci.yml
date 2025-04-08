@@ -40,9 +40,10 @@ jobs:
     - name: Show package.json
       run: cat package.json
       
-    - name: Run tests with more verbose output
-      run: npm run test:ci -- --verbose
-      
+    - name: Run tests directly with jest
+      run: |
+        npx jest --ci --config=jest.config.js --no-cache --forceExit --detectOpenHandles
+        
     - name: Upload coverage report
       uses: actions/upload-artifact@v4
       with:
